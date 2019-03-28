@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const keys = require("./keys.js");
 const axios = require("axios");
+const moment = require("moment");
 const Spotify = require("node-spotify-api");
 const fs = require("fs");
 const spotify = new Spotify(keys.spotify);
@@ -21,7 +22,7 @@ if (programToRun === "concert-this") {
   console.log("You didn't put in the correct program");
 }
 
-function concertThis(artist = "ariana grande") {
+function concertThis(artist = "Ariana Grande") {
   axios
     .get(
       `https://rest.bandsintown.com/artists/${artist}/events?app_id=codingbootcamp`
@@ -30,17 +31,16 @@ function concertThis(artist = "ariana grande") {
       for (i = 0; i < response.data.length; i++) {
         console.log(response.data[i].venue.city);
         console.log(response.data[i].venue.name);
-        console.log(response.data[i].datetime);
+        console.log(moment(response.data[i].datetime).format("MM/DD/YYYY"));
         console.log("==============");
       }
     })
     .catch(function(err) {
       console.log("Error occurred: " + err);
     });
-  // * Date of the Event (use moment to format this as "MM/DD/YYYY")
 }
 
-function spotifySong(song = "The Sign Ace of Base") {
+function spotifySong(song = "Break Up With Your Girlfriend, I'm Bored") {
   spotify.search({ type: "track", query: song }, function(err, data) {
     if (err) {
       return console.log("Error occurred: " + err);
@@ -53,7 +53,7 @@ function spotifySong(song = "The Sign Ace of Base") {
   });
 }
 
-function movieThis(movie = "Mr. Nobody") {
+function movieThis(movie = "Mean Girls") {
   axios
     .get(`http://www.omdbapi.com/?apikey=c065d082&t=${movie}`)
     //axios.get(query)
