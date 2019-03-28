@@ -29,13 +29,13 @@ To search for a concert: (default is Ariana Grande) put quotes around your entry
 
 2. spotify-this-song
 
-To search for a song on Spotify: (default is Ace of Base)
+To search for a song on Spotify: (default is Break Up With Your Girlfriend by Ariana Grande)
 
 ![Image of Song](images/spotify_this_song.gif)
 
 3. movie-this 
 
-To search for a movie: (default is Mr. Nobody)
+To search for a movie: (default is Mean Girls)
 
 ![Image of Moive](images/movie_this.gif)
 
